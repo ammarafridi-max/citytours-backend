@@ -10,7 +10,12 @@ const saltRounds = 10;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
+    optionsSuccessStatus: 200,
+  })
+);
 
 // DB Connection
 mongoose
