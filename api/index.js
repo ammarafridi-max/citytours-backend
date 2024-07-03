@@ -27,29 +27,15 @@ mongoose
 
 // Routes
 // const activitiesRoutes = require("./routes/activities-routes");
-const userRoutes = require("./routes/user-routes");
-const blogRoutes = require("./routes/blog-routes");
-const tourRoutes = require("./routes/tours-routes");
-const destinationRoutes = require("./routes/destination-routes");
+const userRoutes = require("../routes/user-routes");
+const blogRoutes = require("../routes/blog-routes");
+const tourRoutes = require("../routes/tours-routes");
+const destinationRoutes = require("../routes/destination-routes");
 
 // app.use("/activities", activitiesRoutes);
 app.use("/users", userRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/tours", tourRoutes);
 app.use("/destinations", destinationRoutes);
-
-// app.post(`/contact`, async (req, res) => {
-//   const data = {
-//     name: req.body.name,
-//     email: req.body.email,
-//     message: req.body.message,
-//   };
-//   await ContactModel.create(data)
-//     .then(() => {
-//       res.sendStatus(200);
-//       console.log("Data entered successfully");
-//     })
-//     .catch((err) => console.log(`Error sending data to DB: ${err}`));
-// });
 
 app.listen(process.env.PORT);
