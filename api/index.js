@@ -6,11 +6,18 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 // Middleware
+const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL];
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     optionsSuccessStatus: 200,
   })
 );
