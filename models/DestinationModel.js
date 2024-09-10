@@ -5,6 +5,8 @@ const DestinationSchema = new mongoose.Schema({
   url: { type: String },
   image: { type: String },
   description: { type: String },
+  country: { type: String },
+  status: { type: String },
 });
 
 const DestinationModel = mongoose.model("destinations", DestinationSchema);

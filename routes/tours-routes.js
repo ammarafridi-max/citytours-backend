@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const TourModel = require("../models/TourModel");
 
-// 1. Retrieve all tours
 router.get("/", async (req, res) => {
   const tours = await TourModel.find();
-  res.send(tours);
+  res
+    .status(200)
+    .json({ message: "success", results: tours.length, data: tours });
 });
 
-// 2. Retrieve a tour
 router.get("/:url", async (req, res) => {
   try {
     const { url } = req.params;
@@ -25,18 +25,18 @@ router.get("/:url", async (req, res) => {
   }
 });
 
-// 3. Upload a tour
 router.post("/create", async (req, res) => {
   try {
     const tour = {
       dateCreated: req.body.dateCreated,
       dateUpdated: req.body.dateUpdated,
-      name: req.body.name,
+      title: req.body.title,
       url: req.body.url,
       image: req.body.image,
       description: req.body.description,
       duration: req.body.duration,
-      location: req.body.location,
+      destination: req.body.destination,
+      status: req.body.status,
       age: req.body.age,
       price: req.body.price,
       inclusions: req.body.inclusions,
@@ -62,7 +62,6 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// 4. Delete a tour
 router.delete("/delete/:url", async (req, res) => {
   const { url } = req.params;
   try {
@@ -73,7 +72,6 @@ router.delete("/delete/:url", async (req, res) => {
   }
 });
 
-// 5. Update a tour
 router.post("/update/:url", async (req, res) => {
   try {
     const tour = await TourModel.findOneAndUpdate(

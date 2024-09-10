@@ -1,12 +1,7 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-  dateCreated: { type: Date },
-  dateUpdated: { type: Date },
+const RoleSchema = new mongoose.Schema({
   name: { type: String },
-  username: { type: String },
-  email: { type: String },
-  password: { type: String },
   role: { type: String },
   permissions: {
     blogs: {
@@ -34,10 +29,8 @@ const UserSchema = new mongoose.Schema({
       delete: { type: Boolean },
     },
   },
-  status: { type: String },
-  profilePicture: { type: String },
 });
 
-const UserModel = mongoose.model("user", UserSchema);
+const RoleModel = mongoose.model("role", RoleSchema);
 
-module.exports = UserModel;
+module.exports = RoleModel;

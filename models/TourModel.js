@@ -1,17 +1,20 @@
 const mongoose = require("mongoose");
 
 const TourSchema = new mongoose.Schema({
-  dateCreated: { type: String },
-  dateUpdated: { type: String },
-  name: { type: String },
+  dateCreated: { type: Date },
+  dateUpdated: { type: Date },
+  title: { type: String },
   url: { type: String, unique: true },
   image: { type: String },
   description: { type: String },
-  duration: { type: String },
-  location: {
-    city: { type: String },
-    country: { type: String },
+  duration: {
+    days: { type: Number },
+    nights: { type: Number },
   },
+  inclusions: { type: Array },
+  exclusions: { type: Array },
+  destination: { type: String },
+  status: { type: String },
   age: {
     adults: { type: String },
     children: { type: String },
@@ -22,8 +25,7 @@ const TourSchema = new mongoose.Schema({
     children: { type: Number },
     infants: { type: Number },
   },
-  inclusions: { type: Array },
-  exclusions: { type: Array },
+
   additionalInformation: { type: String },
 });
 
