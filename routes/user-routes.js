@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.post("/add", async (req, res) => {
+router.post("/create", async (req, res) => {
   const newUser = req.body;
   const password = req.body.password;
 
@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
   });
 });
 
-router.get("/get/:username", async (req, res) => {
+router.get("/read/:username", async (req, res) => {
   try {
     const user = await UserModel.findOne({ username: req.params.username });
     if (!user) return res.status(404).json({ message: "User not found" });
@@ -61,7 +61,7 @@ router.get("/get/:username", async (req, res) => {
   }
 });
 
-router.put("/:username", async (req, res) => {
+router.put("/update/:username", async (req, res) => {
   const username = req.params.username;
   const userData = req.body;
   const password = req.body.password;

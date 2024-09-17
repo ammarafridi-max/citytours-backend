@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const BlogSchema = new mongoose.Schema({
   dateCreated: { type: Date },
-  dateUpdated: { type: String },
+  dateUpdated: { type: Date },
   title: { type: String, required: true, trim: true },
   url: { type: String, unique: true, required: true, trim: true },
   author: { type: String, required: true, trim: true },
